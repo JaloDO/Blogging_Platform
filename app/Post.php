@@ -8,5 +8,5 @@ use Illuminate\Notifications\Notifiable;
 class Post extends Model
 {
     use Notifiable;
-    protected $fillable = ['title','desciption','author',];
+    protected $fillable = ['title','description','author','publication_date'];
 }

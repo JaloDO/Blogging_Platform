@@ -17,8 +17,12 @@ class CreatePostTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('description');
-            $table->string('author');
-            $table->timestamps();
+
+            $table->unsignedBigInteger('author');
+            $table->foreign('author')->references('id')->on('users');
+
+            $table->DateTime("publication_date");
+            $table->unsignedBigInteger('like');
         });
     }
 

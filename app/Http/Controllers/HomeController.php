@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -43,7 +44,24 @@ class HomeController extends Controller
     }
 
     public function post(){
-        $allpost= Post::all();
+        //$allpost= Post::all();
+        $allpost = DB::table('post')
+            ->join('users', 'users.id', '=', 'post.author')
+            ->select('users.name', 'post.*')
+            ->where('author', '=',  Auth::user()->id)
+            ->get();
+
+
+
+        return view('post', compact('allpost', $allpost));
+    }
+
+    public function sortPost(){
+        
+        $allpost = DB::table('post')
+            ->orderBy('publication_date', 'desc')
+            ->get();
+
         return view('post', compact('allpost', $allpost));
     }
 }
