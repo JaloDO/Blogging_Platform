@@ -3,22 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Blog;
+use App\Post;
+use App\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
     public function index()
   {
-      return view('welcome');
+    $allpost = DB::table('post')
+    ->join('users', 'users.id', '=', 'post.author')
+    ->select('users.name', 'post.*')
+    ->get();
+
+      return view('welcome', compact('allpost', $allpost));
   }
 
-  public function showpost($slug)
-  {
-      $post = Post::where('slug', '=', $slug)->first();
-
-      if(!$Post)
-      abort(404);
-
-      return view('viewpost', ['post' => $post]);
-  }
 }

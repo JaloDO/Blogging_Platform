@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('welcome');
     }
 
     public function profile(){
@@ -44,24 +44,46 @@ class HomeController extends Controller
     }
 
     public function post(){
-        //$allpost= Post::all();
+        $allpost = DB::table('post')
+            ->join('users', 'users.id', '=', 'post.author')
+            ->select('users.name', 'post.*')
+            ->get();
+
+
+
+        return view('post', compact('allpost', $allpost));
+    }
+
+    public function myPost(){
         $allpost = DB::table('post')
             ->join('users', 'users.id', '=', 'post.author')
             ->select('users.name', 'post.*')
             ->where('author', '=',  Auth::user()->id)
             ->get();
-
-
-
-        return view('post', compact('allpost', $allpost));
+        return view('mypost', compact('allpost', $allpost));
     }
 
-    public function sortPost(){
+
+    public function sortPost($field){
         
         $allpost = DB::table('post')
-            ->orderBy('publication_date', 'desc')
+            ->orderBy($field, 'desc')
             ->get();
 
         return view('post', compact('allpost', $allpost));
     }
+
+    public function store(Request $request)
+    {
+        $post = new Post;
+        $post->title   = $request->title;
+        $post->description  = $request->description;
+        $post->author = $request->author;
+        $post->publication_date = DateTime();
+        $post->like = 0;
+        $post->save();
+
+        return redirect('/home/post');
+    }
+    
 }

@@ -12,10 +12,13 @@
 */
 
 Route::get('/', 'FrontController@index'); //main Frontend
-Route::get('/post/{slug}', 'FrontController@showpost'); //show post
+//Route::get('/home', 'FrontController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@post')->name('home');
 Route::get('/home/profile', 'HomeController@profile');
-Route::get('/home/post', 'HomeController@post'); //view list
+Route::get('/home/post', 'HomeController@myPost'); //view list
+
+Route::get('/home/post/submit', 'HomeController@store');
