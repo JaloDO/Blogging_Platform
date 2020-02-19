@@ -32,7 +32,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     <!--{{ config('app.name', 'Laravel') }}-->
-                    Home Page
+                    Home
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -43,20 +43,10 @@
                     <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/home/post') }}">My Posts</a>
-                            </li>
-                            <!--<li class="nav-item">
-                                <a class="nav-link" href="{{ url('/home/profile') }}">Profile</a>
-                            </li>
-                        
-                        
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/home/blog') }}">My Posts</a>
-                            </li> -->           
+                            </li>          
                     </ul>
-                    
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                     <!-- Right Side Of Navbar -->
+                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -86,6 +76,8 @@
                             </li>
                         @endguest
                     </ul>
+
+                   
                 </div>
             </div>
         </nav>

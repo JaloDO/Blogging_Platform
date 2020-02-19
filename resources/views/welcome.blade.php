@@ -16,7 +16,7 @@
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
-                height: 100vh;
+                height: 100%;
                 margin: 0;
             }
 
@@ -49,62 +49,43 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: white;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 20px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
             }
+            .links:hover{
+                box-shadow: 0 0 2px 1px white;
+                color:white;
+                background-color:#636b6f;
+                opacity:0.7;
+            }
 
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .background{
+                background-image:url(https://www.square1.io/images/cover/square1-ie-2.jpg);
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
         </style>
     </head>
-    <body>
+    <body class="background">
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
                 
                     <a href="{{ url('/login') }}">Home</a> 
                 
             </div>
+ @section('content')
 
-            @section('content')
-
-<div class="container">
-    @if(count($allpost) > 0)
-        
-    <div class="table-responsive">
-            <table class="table table-hover">
-            	<thead>
-            		<tr>
-            			<th>Post Nº</th>
-            			<th>Title</th>
-                        <th>Author</th>
-                        <th>Publication Date</th>
-                        <th>Description</th>
-                        <th>Likes</th>
-            		</tr>
-            	</thead>
-            	<tbody>
-                @foreach($allpost as $post)
-              		<tr>
-              			<th>{{ $post->id }}</th>
-              			<td>{{ $post->title }}</td>
-                    <td>{{ $post->name }}</td>
-                    <td>{{ $post->publication_date }}</td>
-                    <td>{{ $post->description }}</td>
-                    <td>{{ $post->like }}</td>
-              		</tr>
-                @endforeach
-            	</tbody>
-            </table>
-            @else
-            <p>Nº de posts count($allpost)</p>
-    @endif
-</div>
 
 @endsection
         </div>

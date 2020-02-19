@@ -14,7 +14,7 @@
                         <th>Author</th>
                         <th>Publication Date</th>
                         <th>Description</th>
-                        <th>Likes</th>
+                        <th><img src="https://img.icons8.com/cotton/2x/facebook-like--v2.png" width="10%"/></th>
             		</tr>
             	</thead>
             	<tbody>

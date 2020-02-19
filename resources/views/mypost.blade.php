@@ -11,10 +11,10 @@
             		<tr>
             			<th>Post Nº</th>
             			<th>Title</th>
-                        <th>Author</th>
-                        <th>Publication Date</th>
-                        <th>Description</th>
-                        <th>Likes</th>
+                  <th>Author</th>
+                  <th>Publication Date</th>
+                  <th>Description</th>
+                  <th><img src="https://img.icons8.com/cotton/2x/facebook-like--v2.png" width="10%"/></th>
             		</tr>
             	</thead>
             	<tbody>
@@ -46,8 +46,7 @@
     <input type="text" class="form-control" id="deescription" placeholder="Enter post content">
     <small id="descHelp" class="form-text text-muted">Maximum 255 characters.</small>
   </div>
-  {{ csrf_field() }}
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary"><a href="../home">Submit</a></button>
   </fieldset>
 </form>
 
