@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontController@index'); //main Frontend
+Route::get('/blog/{slug}', 'FrontController@showblog'); //show blog
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/profile', 'HomeController@profile');
