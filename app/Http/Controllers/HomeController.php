@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -27,6 +34,16 @@ class HomeController extends Controller
     }
 
     public function profile(){
-        return view('profile');
+        {
+            $user = User::where('email', '=', Auth::user()->email)->first();
+            $email = Auth::user()->email;
+    
+            return view('profile', ['user' => $user, 'email' => $email]);
+        }
+    }
+
+    public function post(){
+        $allpost= Post::all();
+        return view('post', compact('allpost', $allpost));
     }
 }

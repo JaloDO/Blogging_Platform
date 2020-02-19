@@ -44,7 +44,7 @@
                     <ul class="navbar-nav ml-auto">
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/home') }}">Posts</a>
+                                <a class="nav-link" href="{{ url('/home/post') }}">Posts</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/home/profile') }}">Profile</a>
@@ -52,7 +52,7 @@
                         
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/home') }}">Posts</a>
+                                <a class="nav-link" href="{{ url('/home/blog') }}">Posts</a>
                             </li>
                         @endif                  
                     </ul>

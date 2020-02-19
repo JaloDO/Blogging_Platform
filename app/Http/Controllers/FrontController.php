@@ -12,13 +12,13 @@ class FrontController extends Controller
       return view('welcome');
   }
 
-  public function showblog($slug)
+  public function showpost($slug)
   {
-      $blog = Blog::where('slug', '=', $slug)->first();
+      $post = Post::where('slug', '=', $slug)->first();
 
-      if(!$blog)
+      if(!$Post)
       abort(404);
 
-      return view('viewblog', ['blog' => $blog]);
+      return view('viewpost', ['post' => $post]);
   }
 }
