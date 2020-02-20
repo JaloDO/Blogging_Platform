@@ -22,7 +22,6 @@ class CreatePostTable extends Migration
             $table->foreign('author')->references('id')->on('users');
 
             $table->DateTime("publication_date");
-            $table->unsignedBigInteger('like');
         });
     }
 

@@ -85,7 +85,6 @@ class HomeController extends Controller
         $post->description  = $request->description;
         $post->author = $request->author;
         $post->publication_date = DateTime();
-        $post->like = 0;
         $post->save();
 
         return redirect('/home/post');
@@ -110,19 +109,21 @@ class HomeController extends Controller
                 array('user' => $user_like->user, 'post' => $id)
             );
 
-            //update
+            /*update
             
             DB::table('post')
                 ->where('id', $id)
                 ->increment('likes');
+                */
         }
         else{
+            /*
             //si se ha encontrado
             //update likes, delete from users_likes where id
             DB::table('post')
                 ->where('id',$id)
                 ->increment('likes');
-            
+            */
 
         }
         return redirect('/home');

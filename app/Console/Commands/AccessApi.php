@@ -48,7 +48,7 @@ class AccessApi extends Command
 
             //insert to DB
             DB::table('post')->insert([
-                ['title' => $title, 'description' => $desc, 'publication_date' => $fecha, 'author' => 7, 'like' => 0]
+                ['title' => $title, 'description' => $desc, 'publication_date' => $fecha, 'author' => 7]
             ]);
         }
     }
