@@ -10,7 +10,7 @@
     </select>
     <div><p></p></div>
     <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover" style="font-size:.9em;">
                 <caption>List of Posts</caption>
             	<thead class="thead-dark">
             		<tr>

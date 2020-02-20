@@ -23,12 +23,12 @@
 
     @if(count($allpost) > 0)
     <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover table-sm" style="font-size:.8em;">
             	<thead class="thead-light">
             		<tr>
             			<th>Post</th>
             			<th>Title</th>
-                  <th>Author</th>
+                  <!--<th>Author</th>-->
                   <th>Description</th>
                   <th>Date</th>
                   <th>Likes</th>
@@ -39,7 +39,7 @@
               		<tr>
               			<th>{{ $post->id }}</th>
               			<td>{{ $post->title }}</td>
-                    <td>{{ $post->name }}</td>
+                    <!--<td>{{ $post->name }}</td>-->
                     <td>{{ $post->description }}</td>
                     <td>{{ $post->publication_date }}</td>
                     <td>{{ $post->num }}</td>
