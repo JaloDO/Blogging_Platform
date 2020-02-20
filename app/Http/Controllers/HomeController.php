@@ -102,11 +102,24 @@ class HomeController extends Controller
             $user_like = new UserLike();
             $user_like->user = Auth::user()->id;
             $user_like->post = $id;
-            $user_like->save();
+            DB::table('users_likes')->insert(
+                array('user' => $user_like->user, 'post' => $id)
+            );
+            //obtener likes
+            $num_likes = DB::table('post')
+                ->where('id', $id)
+                ->select('likes')
+                ->get();
+            //update
+            ++$numLikes;
+            DB::table('post')
+                ->where('id', $id)
+                ->update(array('likes' => $numLikes));
         }
         else{
             //si se ha encontrado
-            //delete
+            //update likes, delete from users_likes where id
+            
 
         }
         return redirect('/home');
