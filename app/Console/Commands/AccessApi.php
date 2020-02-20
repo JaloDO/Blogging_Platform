@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class AccessApi extends Command
 {
@@ -42,12 +43,12 @@ class AccessApi extends Command
         $posts = json_decode($json, true);
         foreach($posts["data"] as $clave =>$valor){
             $title = $valor["title"];
-            $desc = $valor["descripcion"];
+            $desc = $valor["description"];
             $fecha = $valor["publication_date"];
 
             //insert to DB
             DB::table('post')->insert([
-                ['title' => $title, 'descripcion' => $desc, 'publication_date' => $fecha, 'author' => 7, 'like' => 0]
+                ['title' => $title, 'description' => $desc, 'publication_date' => $fecha, 'author' => 7, 'like' => 0]
             ]);
         }
     }

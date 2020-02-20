@@ -16,7 +16,7 @@ class CreatePostTable extends Migration
         Schema::create('post', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
 
             $table->unsignedBigInteger('author');
             $table->foreign('author')->references('id')->on('users');

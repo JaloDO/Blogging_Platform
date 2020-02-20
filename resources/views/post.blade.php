@@ -32,7 +32,7 @@
                     <td>{{ $post->publication_date }}</td>
                     <td>{{ $post->like }}</td>
                     <td>
-                        <a href="home/{{ $post->id }}" ><img src="https://img.icons8.com/cotton/2x/facebook-like--v2.png" width="10%"/></a>
+                        <a href="home/{{ $post->id }}" ><img src="https://img.icons8.com/cotton/2x/facebook-like--v2.png" width="50px" height="50px"/></a>
                     </td>
               		</tr>
                 @endforeach

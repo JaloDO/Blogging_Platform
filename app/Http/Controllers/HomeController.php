@@ -71,7 +71,7 @@ class HomeController extends Controller
             ->orderBy($field, 'desc')
             ->get();
 
-        return view('post', compact('allpost', $allpost));
+        return view('home', compact('allpost', $allpost));
     }
 
     public function store(Request $request)
