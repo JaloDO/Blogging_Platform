@@ -47,10 +47,11 @@ class HomeController extends Controller
     public function post(){
         $allpost = DB::table('post')
             ->join('users', 'users.id', '=', 'post.author')
-            ->select('users.name', 'post.*')
+            ->select('users.name', 'post.*', 
+                DB::raw("(select count(*) from users_likes where post = post.id) as num"))
             ->get();
 
-
+        
 
         return view('post', compact('allpost', $allpost));
     }
@@ -62,6 +63,13 @@ class HomeController extends Controller
             ->where('author', '=',  Auth::user()->id)
             ->get();
         return view('mypost', compact('allpost', $allpost));
+    }
+    public function numLikes($id){
+        $num = DB::table('users_likes')
+            ->select('count(*)')
+            ->where('post','=',$id)
+            ->get();
+        return $num;
     }
 
 
@@ -105,20 +113,19 @@ class HomeController extends Controller
             DB::table('users_likes')->insert(
                 array('user' => $user_like->user, 'post' => $id)
             );
-            //obtener likes
-            $num_likes = DB::table('post')
-                ->where('id', $id)
-                ->select('likes')
-                ->get();
+
             //update
-            ++$numLikes;
+            
             DB::table('post')
                 ->where('id', $id)
-                ->update(array('likes' => $numLikes));
+                ->increment('likes');
         }
         else{
             //si se ha encontrado
             //update likes, delete from users_likes where id
+            DB::table('post')
+                ->where('id',$id)
+                ->increment('likes');
             
 
         }
