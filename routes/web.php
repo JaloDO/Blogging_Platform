@@ -23,3 +23,7 @@ Route::get('/home/post', 'HomeController@myPost'); //view list
 
 Route::get('/home/post/submit', 'HomeController@store');
 Route::get('/home/{id}', 'HomeController@liked');
+
+
+Route::get('/home/fecha/d', 'HomeController@sortDate');
+Route::get('/home/like', 'HomeController@sortLike');

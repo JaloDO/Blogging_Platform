@@ -57,6 +57,8 @@ class HomeController extends Controller
     }
 
     public function myPost(){
+        $output='entra en my post';
+        echo '<script>console.log('.json_encode($output, JSON_HEX_TAG).')</script>';
         $allpost = DB::table('post')
             ->join('users', 'users.id', '=', 'post.author')
             ->select('users.name', 'post.*', 
@@ -69,13 +71,19 @@ class HomeController extends Controller
    
 
 
-    public function sortPost($field){
-        
+    public function sortDate(){
+        $output='entra en sort date';
+        echo '<script>console.log('.json_encode($output, JSON_HEX_TAG).')</script>';
         $allpost = DB::table('post')
-            ->orderBy($field, 'desc')
-            ->get();
+        ->join('users', 'users.id', '=', 'post.author')
+        ->select('users.name', 'post.*', 
+            DB::raw("(select count(*) from users_likes where post = post.id) as num"))
+        ->orderBy('post.publication_date','desc')
+        ->get();
 
-        return view('home', compact('allpost', $allpost));
+    
+
+        return view('post', compact('allpost', $allpost));
     }
 
     public function store(Request $request)

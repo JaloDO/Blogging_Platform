@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('accessApi2:post')
-        ->hourly();
+        ->everyMinute();
     }
 
     /**

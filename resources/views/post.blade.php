@@ -4,10 +4,11 @@
 
 <div class="container">
     @if(count($allpost) > 0)
-    <select class="btn btn-terciary btn-sm">
+    <a href="home/fecha/d">order date</a>
+    <!--<select class="btn btn-terciary btn-sm">
         <option class="dropdown-item" value=0>Sort by Date</option>
         <option class="dropdown-item" value=1>Sort by Likes</option>
-    </select>
+    </select>-->
     <div><p></p></div>
     <div class="table-responsive">
             <table class="table table-hover" style="font-size:.9em;">
