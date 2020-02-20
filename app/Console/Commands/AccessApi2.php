@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Console\Scheduling\Schedule;
 
 class AccessApi2 extends Command
 {

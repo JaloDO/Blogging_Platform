@@ -84,13 +84,4 @@ class Kernel extends HttpKernel
         
     ];
 
-    protected $commands = [
-        'App\Console\Commands\AccessApi2',
-    ];
-
-    protected function schedule(Schedule $schedule){
-        
-        $schedule->command('accessApi2:post')
-        ->everyFiveMinute();
-    }
 }
