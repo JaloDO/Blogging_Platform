@@ -21,9 +21,9 @@ Route::get('/home', 'HomeController@post')->name('home');
 Route::get('/home/profile', 'HomeController@profile');
 Route::get('/home/post', 'HomeController@myPost'); //view list
 
-Route::get('/home/post/submit', 'HomeController@store');
-Route::get('/home/{id}', 'HomeController@liked');
+Route::get('/home/like/{id}', 'HomeController@liked');
+Route::get('/home/home/like/{id}', 'HomeController@liked');
 
-
-Route::get('/home/fecha/d', 'HomeController@sortDate');
-Route::get('/home/like', 'HomeController@sortLike');
+Route::get('/store', 'HomeController@store');
+Route::get('/home/sortDate', 'HomeController@sortDate');
+Route::get('/home/sortLike', 'HomeController@sortLike');

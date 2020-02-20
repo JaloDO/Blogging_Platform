@@ -4,7 +4,9 @@
 
 <div class="container">
     @if(count($allpost) > 0)
-    <a href="home/fecha/d">order date</a>
+    <form method="get" action="/blog_plat/public/home/sortDate">
+        <button type="submit" class="btn btn-terciary" name="submit">Order by Date</button>
+    </form>
     <!--<select class="btn btn-terciary btn-sm">
         <option class="dropdown-item" value=0>Sort by Date</option>
         <option class="dropdown-item" value=1>Sort by Likes</option>
@@ -33,7 +35,12 @@
                     <td>{{ $post->publication_date }}</td>
                     <td> {{ $post->num }} </td>
                     <td>
-                        <a href="home/{{ $post->id }}" ><img src="https://img.icons8.com/cotton/2x/facebook-like--v2.png" width="50px" height="50px"/></a>
+                        @if(Route::has('sortDate'))
+                        <a href="..//home/like/{{ $post->id }}" ><img src="https://img.icons8.com/cotton/2x/facebook-like--v2.png" width="50px" height="50px"/></a>
+                        @else
+                        <a href="home/like/{{ $post->id }}" ><img src="https://img.icons8.com/cotton/2x/facebook-like--v2.png" width="50px" height="50px"/></a>
+                        @endif
+
                     </td>
               		</tr>
                 @endforeach

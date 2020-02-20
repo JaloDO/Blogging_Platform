@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DateTime;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
@@ -51,8 +51,6 @@ class HomeController extends Controller
                 DB::raw("(select count(*) from users_likes where post = post.id) as num"))
             ->get();
 
-        
-
         return view('post', compact('allpost', $allpost));
     }
 
@@ -91,9 +89,15 @@ class HomeController extends Controller
         $post = new Post;
         $post->title   = $request->title;
         $post->description  = $request->description;
-        $post->author = $request->author;
-        $post->publication_date = DateTime();
-        $post->save();
+        $post->author = Auth::user()->id;
+        $post->publication_date = new DateTime();
+        
+        DB::table('post')->insert(
+            array('title' => $post->title,
+             'description' => $post->description,
+             'author' => $post->author,
+             'publication_date' => new DateTime())
+        );
 
         return redirect('/home/post');
     }
