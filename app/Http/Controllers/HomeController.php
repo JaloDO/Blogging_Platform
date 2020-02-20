@@ -59,18 +59,14 @@ class HomeController extends Controller
     public function myPost(){
         $allpost = DB::table('post')
             ->join('users', 'users.id', '=', 'post.author')
-            ->select('users.name', 'post.*')
+            ->select('users.name', 'post.*', 
+                DB::raw("(select count(*) from users_likes where post = post.id) as num"))
             ->where('author', '=',  Auth::user()->id)
+            ->orderBy('post.publication_date', 'desc')
             ->get();
         return view('mypost', compact('allpost', $allpost));
     }
-    public function numLikes($id){
-        $num = DB::table('users_likes')
-            ->select('count(*)')
-            ->where('post','=',$id)
-            ->get();
-        return $num;
-    }
+   
 
 
     public function sortPost($field){

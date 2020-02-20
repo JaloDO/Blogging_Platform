@@ -3,35 +3,7 @@
 @section('content')
 
 <div class="container">
-    @if(count($allpost) > 0)
-        
-    <div class="table-responsive">
-            <table class="table table-hover">
-            	<thead class="thead-light">
-            		<tr>
-            			<th>Post Nº</th>
-            			<th>Title</th>
-                  <th>Author</th>
-                  <th>Description</th>
-                  <th>Publication Date</th>
-                  <th>Likes</th>
-            		</tr>
-            	</thead>
-            	<tbody>
-                @foreach($allpost as $post)
-              		<tr>
-              			<th>{{ $post->id }}</th>
-              			<td>{{ $post->title }}</td>
-                    <td>{{ $post->name }}</td>
-                    <td>{{ $post->description }}</td>
-                    <td>{{ $post->publication_date }}</td>
-                    <td>{{ $post->like }}</td>
-              		</tr>
-                @endforeach
-            	</tbody>
-            </table>
-    @endif
-</div>
+
 <form action="post">
 <fieldset style="width:auto;padding:0 10px;border-bottom:none;">
 <legend style="font-size:1.8em">New post</legend>
@@ -47,6 +19,36 @@
   </div>
   <button type="submit" class="btn btn-secondary"><a style="color:white;text-decoration:none;" href="../home">Submit</a></button>
   </fieldset>
-</form>
+</form><div style="height:30px;"></div>
+
+    @if(count($allpost) > 0)
+    <div class="table-responsive">
+            <table class="table table-hover">
+            	<thead class="thead-light">
+            		<tr>
+            			<th>Post</th>
+            			<th>Title</th>
+                  <th>Author</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>Likes</th>
+            		</tr>
+            	</thead>
+            	<tbody>
+                @foreach($allpost as $post)
+              		<tr>
+              			<th>{{ $post->id }}</th>
+              			<td>{{ $post->title }}</td>
+                    <td>{{ $post->name }}</td>
+                    <td>{{ $post->description }}</td>
+                    <td>{{ $post->publication_date }}</td>
+                    <td>{{ $post->num }}</td>
+              		</tr>
+                @endforeach
+            	</tbody>
+            </table>
+    @endif
+</div>
+
 
 @endsection

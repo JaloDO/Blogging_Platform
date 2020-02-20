@@ -14,11 +14,11 @@
                 <caption>List of Posts</caption>
             	<thead class="thead-dark">
             		<tr>
-            			<th>Post Nº</th>
+            			<th>Post</th>
             			<th>Title</th>
                         <th>Author</th>
                         <th>Description</th>
-                        <th>Publication Date</th>
+                        <th>Date</th>
                         <th colspan=2>Likes</th>
             		</tr>
             	</thead>
