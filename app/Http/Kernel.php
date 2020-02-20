@@ -4,6 +4,8 @@ namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Console\Scheduling\Schedule;
+
 
 class Kernel extends HttpKernel
 {
@@ -83,12 +85,12 @@ class Kernel extends HttpKernel
     ];
 
     protected $commands = [
-        'App\Console\Commands\AccessApi'
+        //'App\Console\Commands\AccessApi'
     ];
 
     protected function schedule(Schedule $schedule){
         
         $schedule->command('accessApi:post')
-        ->everyMinute();
+        ->everyFiveMinute();
     }
 }
