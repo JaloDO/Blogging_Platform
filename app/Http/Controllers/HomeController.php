@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\UserLike;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -85,5 +86,29 @@ class HomeController extends Controller
 
         return redirect('/home/post');
     }
-    
+
+    public function liked($id){
+        //primero, consulta para ver si está en la BD
+        $userLikePost = DB::table('users_likes')
+            ->where([
+                ['user', '=', Auth::user()->id],
+                ['post', '=', $id],
+            ])
+            ->get();
+
+        if(!$userLikePost->count()){
+            //no se ha encontrado like de usuario para ese post 
+            // insert
+            $user_like = new UserLike();
+            $user_like->user = Auth::user()->id;
+            $user_like->post = $id;
+            $user_like->save();
+        }
+        else{
+            //si se ha encontrado
+            //delete
+
+        }
+        return redirect('/home');
+    }
 }

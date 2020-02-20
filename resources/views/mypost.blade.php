@@ -7,14 +7,14 @@
         
     <div class="table-responsive">
             <table class="table table-hover">
-            	<thead>
+            	<thead class="thead-light">
             		<tr>
             			<th>Post Nº</th>
             			<th>Title</th>
                   <th>Author</th>
-                  <th>Publication Date</th>
                   <th>Description</th>
-                  <th><img src="https://img.icons8.com/cotton/2x/facebook-like--v2.png" width="10%"/></th>
+                  <th>Publication Date</th>
+                  <th>Likes</th>
             		</tr>
             	</thead>
             	<tbody>
@@ -23,8 +23,8 @@
               			<th>{{ $post->id }}</th>
               			<td>{{ $post->title }}</td>
                     <td>{{ $post->name }}</td>
-                    <td>{{ $post->publication_date }}</td>
                     <td>{{ $post->description }}</td>
+                    <td>{{ $post->publication_date }}</td>
                     <td>{{ $post->like }}</td>
               		</tr>
                 @endforeach
@@ -33,7 +33,6 @@
     @endif
 </div>
 <form action="post">
-
 <fieldset style="width:auto;padding:0 10px;border-bottom:none;">
 <legend style="font-size:1.8em">New post</legend>
   <div class="form-group">
@@ -46,7 +45,7 @@
     <input type="text" class="form-control" id="deescription" placeholder="Enter post content">
     <small id="descHelp" class="form-text text-muted">Maximum 255 characters.</small>
   </div>
-  <button type="submit" class="btn btn-primary"><a href="../home">Submit</a></button>
+  <button type="submit" class="btn btn-secondary"><a style="color:white;text-decoration:none;" href="../home">Submit</a></button>
   </fieldset>
 </form>
 

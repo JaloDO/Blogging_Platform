@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Kernel extends HttpKernel
 {
+    
     /**
      * The application's global HTTP middleware stack.
      *
@@ -81,23 +82,13 @@ class Kernel extends HttpKernel
         
     ];
 
+    protected $commands = [
+        'App\Console\Commands\AccessApi'
+    ];
+
     protected function schedule(Schedule $schedule){
-        $schedule->call(function(){
-
-            $json = file_get_contents("https://sq1-api-test.herokuapp.com/posts");
-            $posts = json_decode($json, true);
-            foreach($posts["data"] as $clave =>$valor){
-                $title = $valor["title"];
-                $desc = $valor["descripcion"];
-                $fecha = $valor["publication_date"];
-
-                //insert to DB
-                
-                DB::table('post')->insert([
-                    ['title' => $title, 'descripcion' => $desc, 'publication_date' => $fecha, 'author' => 7, 'like' => 0]
-                ]);
-            }
-
-        })->everyMinutes();
+        
+        $schedule->command('accessApi:post')
+        ->everyMinute();
     }
 }
