@@ -11,9 +11,6 @@
 |
 */
 
-//Route::get('/', 'FrontController@index'); //main Frontend
-//Route::get('/home', 'FrontController@index');
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index');

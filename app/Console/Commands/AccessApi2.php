@@ -45,12 +45,6 @@ class AccessApi2 extends Command
             $title = $valor["title"];
             $desc = $valor["description"];
             $fecha = $valor["publication_date"];
-
-            
-            /*$id_author = DB::table('users')
-                ->select('id')
-                ->where('email', '=', 'admin@gmail.com')
-                ->get();*/
                 
             DB::table('post')->insert([
                 ['title' => $title, 'description' => $desc, 'publication_date' => $fecha, 'author' => 1]

@@ -114,7 +114,7 @@ class HomeController extends Controller
     }
 
     public function liked($id){
-        //primero, consulta para ver si está en la BD
+        
         $userLikePost = DB::table('users_likes')
             ->where([
                 ['user', '=', Auth::user()->id],
@@ -123,28 +123,19 @@ class HomeController extends Controller
             ->get();
 
         if(!$userLikePost->count()){
-            //no se ha encontrado like de usuario para ese post 
-            // insert
+            
             $user_like = new UserLike();
             $user_like->user = Auth::user()->id;
             $user_like->post = $id;
             DB::table('users_likes')->insert(
                 array('user' => $user_like->user, 'post' => $id)
             );
-
-            /*update
-            
-            DB::table('post')
-                ->where('id', $id)
-                ->increment('likes');
-                */
         }
         else{
             DB::table('users_likes')
             ->where('user', '=', Auth::user()->id)
             ->where('post', '=', $id)
             ->delete();
-
         }
         return redirect('/home');
     }
