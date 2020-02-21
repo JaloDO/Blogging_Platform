@@ -17,6 +17,7 @@ Administrator Data:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Password:</b>&nbsp;&nbsp;admin123
 
 
+I have done an artisan command to import post automatically from an API provided for the company Square1.
 
 ## License
 
