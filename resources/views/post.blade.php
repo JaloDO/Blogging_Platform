@@ -5,13 +5,12 @@
 <div class="container">
     @if(count($allpost) > 0)
     <form method="get" action="/blog_plat/public/home/sortDate">
-        <button type="submit" class="btn btn-terciary" name="submit">Order by Date</button>
+        <button type="submit" class="btn btn-terciary btn-sm" name="submit">Order by Date</button>
     </form>
-    <!--<select class="btn btn-terciary btn-sm">
-        <option class="dropdown-item" value=0>Sort by Date</option>
-        <option class="dropdown-item" value=1>Sort by Likes</option>
-    </select>-->
-    <div><p></p></div>
+    <form method="get" action="/blog_plat/public/home/sortLike">
+        <button type="submit" class="btn btn-terciary btn-sm" name="submit">Order by Likes</button>
+    </form>
+    
     <div class="table-responsive">
             <table class="table table-hover" style="font-size:.9em;">
                 <caption>List of Posts</caption>

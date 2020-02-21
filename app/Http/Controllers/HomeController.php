@@ -81,6 +81,19 @@ class HomeController extends Controller
 
         return view('post', compact('allpost', $allpost));
     }
+    public function sortLike(){
+        
+        $allpost = DB::table('post')
+        ->join('users', 'users.id', '=', 'post.author')
+        ->select('users.name', 'post.*', 
+            DB::raw("(select count(*) from users_likes where post = post.id) as num"))
+        ->orderBy('num','desc')
+        ->get();
+
+    
+
+        return view('post', compact('allpost', $allpost));
+    }
 
     public function store(Request $request)
     {
@@ -127,13 +140,10 @@ class HomeController extends Controller
                 */
         }
         else{
-            /*
-            //si se ha encontrado
-            //update likes, delete from users_likes where id
-            DB::table('post')
-                ->where('id',$id)
-                ->increment('likes');
-            */
+            DB::table('users_likes')
+            ->where('user', '=', Auth::user()->id)
+            ->where('post', '=', $id)
+            ->delete();
 
         }
         return redirect('/home');
