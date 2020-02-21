@@ -55,8 +55,7 @@ class HomeController extends Controller
     }
 
     public function myPost(){
-        $output='entra en my post';
-        echo '<script>console.log('.json_encode($output, JSON_HEX_TAG).')</script>';
+        
         $allpost = DB::table('post')
             ->join('users', 'users.id', '=', 'post.author')
             ->select('users.name', 'post.*', 
@@ -70,8 +69,7 @@ class HomeController extends Controller
 
 
     public function sortDate(){
-        $output='entra en sort date';
-        echo '<script>console.log('.json_encode($output, JSON_HEX_TAG).')</script>';
+        
         $allpost = DB::table('post')
         ->join('users', 'users.id', '=', 'post.author')
         ->select('users.name', 'post.*', 
